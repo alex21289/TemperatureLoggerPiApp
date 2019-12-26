@@ -38,10 +38,11 @@ def main():
         print(e)
 
 
-    #curs.execute("SELECT * FROM tbl_temp;")
+    #curs.execute("SELECT * FROM temperature;")
     #liste=curs.fetchall()
     #for row in liste:
        #print(row[1].strftime("%d.%m.%y"))
+
     curs.close()
     conn.close()
     
