@@ -109,7 +109,9 @@ venv/
 ENV/
 env.bak/
 venv.bak/
-
+# Logs
+log.py
+cron_log
 # Spyder project settings
 .spyderproject
 .spyproject
