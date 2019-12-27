@@ -30,7 +30,7 @@ def main():
     print("Lustfeuchtigkeit: "+humidity)
     print("Temperatur: "+temperature)
     try:
-        curs.execute ("INSERT INTO temperature(DATE, TIME,HUMIDITY, TEMP) VALUES (%s,%s,%s, %s);", (datum, zeit,humidity, temperature))
+        curs.execute ("INSERT INTO temperature(TIME,HUMIDITY, TEMP) VALUES (%s,%s, %s);", (zeit,humidity, temperature))
         conn.commit()
         print("Daten übertragen")
     except Exception as e:
