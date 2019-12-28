@@ -16,7 +16,8 @@ conn = psycopg2.connect(database=db, user=username,password=password, host=host,
 print ("Opened database successfully")
 curs = conn.cursor()
 
-zeit = dt.datetime.now()
+date = dt.datetime.now().strftime("%d.%m.%y")
+time = dt.datetime.now().strftime("%H:%M:%S")
 
 def main():
     sensor = dht22.Adafruit_DHT.DHT22
@@ -29,7 +30,7 @@ def main():
     print("Lustfeuchtigkeit: "+humidity)
     print("Temperatur: "+temperature)
     try:
-        curs.execute ("INSERT INTO temperature(TIME,HUMIDITY, TEMP) VALUES (%s,%s, %s);", (zeit,humidity, temperature))
+        curs.execute ("INSERT INTO temperature(DATE, TIME, HUMIDITY, TEMP) VALUES (%s, %s,%s, %s);", (date, time, humidity, temperature))
         conn.commit()
         print("Daten übertragen")
     except Exception as e:
@@ -46,7 +47,6 @@ def main():
 
     curs.close()
     conn.close()
-    
     
 
 
