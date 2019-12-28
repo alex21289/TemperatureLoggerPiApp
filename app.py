@@ -16,7 +16,7 @@ conn = psycopg2.connect(database=db, user=username,password=password, host=host,
 print ("Opened database successfully")
 curs = conn.cursor()
 
-date = dt.datetime.now().strftime("%d.%m.%y")
+date = dt.datetime.now().strftime("%Y-%m-%d")
 time = dt.datetime.now().strftime("%H:%M:%S")
 
 def main():
@@ -37,7 +37,7 @@ def main():
         print("Fehler: ")
         print(e)
         with open('cron_log','a') as log_file:
-            log_file.write(zeit.strftime("%d.%m.%y - %H:%M:%S")+ " execute failed: "+e)
+            log_file.write("\n"+time.strftime("%d.%m.%y - %H:%M:%S")+ " execute failed: "+e)
 
 
     #curs.execute("SELECT * FROM temperature;")
